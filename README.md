@@ -16,7 +16,7 @@ list|NNA_BLACKLISTED_WORDS||List of advertisements/banned nicknames. Case are ig
 string|NNA_TEXT||Replaces the advertisement with the specified text. It's recommended to leave the field blank. If NNA_MODE = 2, it causes the ban. Use %word% to specify the word that caused the ban.
 int|NNA_DURATION|2|Ban's duration
 bool|NNA_SELECTIVE_DELETION|true|Selective deletion of ads. If true - only deletes what is specified in NNA_BLACKLISTED_WORDS, if false - completely deletes the word. [If true](https://cdn.discordapp.com/attachments/595913512065171467/640550217808085002/unknown1.png), [If false](https://cdn.discordapp.com/attachments/595913512065171467/640550223730442260/unknown2.png).
-list|NNA_WHITELIST||A list of steamid64 of players who are allow to bypass the check
+list|NNA_WHITELIST||A list of steamid64 of players who are allowed to bypass the check
 
 ### NNA_BLACKLISTED_WORDS Example
 NNA_BLACKLISTED_WORDS: SoMеS1TеHeRe.com,someshittyad,FrеeCsgоskins.org,D0TАSKINS4FRЕE,pubgitеms.com,etc...
