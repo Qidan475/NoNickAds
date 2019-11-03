@@ -2,7 +2,7 @@
 When player joins to the server, plugin replaces ads in his nickname with the specified text or just ban him.
 
 ## Compatible versions of SMod
-3.5.0 - 3.5.1-K(tester ver.)
+3.4.0 - 3.5.1-K(tester ver.)
 
 ## How to install
 Drop NoNickAds.dll in to sm_plugins.
