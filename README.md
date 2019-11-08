@@ -2,7 +2,7 @@
 When player joins to the server, plugin replaces ads in his nickname with the specified text or just ban him.
 
 ## Compatible versions of SMod
-3.4.0 - 3.5.1-L(tester ver.)
+3.4.0 - 3.6.0
 
 ## How to install
 Drop NoNickAds.dll in to sm_plugins.
@@ -32,7 +32,7 @@ NNA_WHITELIST: 76561198111120799,76561198xxxxxxxxx,76561197xxxxxxxxx,76561752xxx
 При входе на сервер игрока, плагин заменяет рекламу в его нике указанным текстом или просто банит его.
 
 ## Совместимые версии SMod'а
-3.4.0 - 3.5.1-L(тестовая версия)
+3.4.0 - 3.6.0
 
 ## Установка
 Перекиньте файл NoNickAds.dll в папку sm_plugins.
