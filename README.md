@@ -8,7 +8,7 @@ Drop NoNickAds.dll in to Plugins.
 Value Type|Config Name|Default value|Description|
 ----------|-------------|-----------|-----------|
 bool|nna_disable|false|Turns off the plugin
-int|nna_mode|1|Plugin mode. If 1 - replaces nickname, if 2 - ban the player
+int|nna_mode|1|Plugin mode. 1 — replace mode, 2 — ban mode
 list|nna_blacklisted_words||List of advertisements/banned nicknames. Case are ignored*.
 string|nna_text||Replaces the advertisement with the specified text. It's recommended to leave the field blank. If nna_mode = 2, it causes the ban. Use %words% to specify words that caused the ban.
 int|nna_ban_duration|2|Ban duration in minutes. 525600 - 1 year, 26280000 - 50 years
