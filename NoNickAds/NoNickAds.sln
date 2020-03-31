@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoNickAds", "ExamplePlugin\NoNickAds.csproj", "{0952A53A-A70E-4DAA-86A6-6560F2F3607B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoNickAds", "SamplePlugin\NoNickAds.csproj", "{9280B8BA-6290-4FC8-A58F-BC24E43AA486}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0952A53A-A70E-4DAA-86A6-6560F2F3607B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0952A53A-A70E-4DAA-86A6-6560F2F3607B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0952A53A-A70E-4DAA-86A6-6560F2F3607B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0952A53A-A70E-4DAA-86A6-6560F2F3607B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9280B8BA-6290-4FC8-A58F-BC24E43AA486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9280B8BA-6290-4FC8-A58F-BC24E43AA486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9280B8BA-6290-4FC8-A58F-BC24E43AA486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9280B8BA-6290-4FC8-A58F-BC24E43AA486}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {93980AF1-83D2-487D-8CDA-F1CD4AB2B304}
+		SolutionGuid = {6A21F433-B2FE-4B75-9F3E-9023C6ACAD68}
 	EndGlobalSection
 EndGlobal
