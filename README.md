@@ -1,4 +1,4 @@
-# EN [RU](https://github.com/Qidan475/NoNickAds#ru)
+# EN [RU](https://github.com/Qidan475/NoNickAds#ru-en)
 When player joins to the server, plugin replaces ads in his nickname with the specified text or just ban him.
 
 ## How to install
@@ -29,7 +29,7 @@ nna_whitelisted_players: 76561198111120799@steam,UnknownPole@northwood,242306234
 
 ***
 
-# RU [EN](https://github.com/Qidan475/NoNickAds#en)
+# RU [EN](https://github.com/Qidan475/NoNickAds/#en-ru)
 При входе на сервер игрока, плагин заменяет рекламу в его нике указанным текстом или просто банит его.
 
 ## Установка
