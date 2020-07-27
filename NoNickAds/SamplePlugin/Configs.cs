@@ -25,8 +25,8 @@ namespace NoNickAds
         public List<string> WhitelistedPlayers { get; set; } = new List<string>();
 
 
-        [Description("EN: List of ads that will be replaced by ReplacementText" +
-               "\n  # RU: Список рекламы, которая будет заменяться на ReplacementText")]
+        [Description("EN: List of ads that will be replaced by ReplacementText. Case insensitive" +
+               "\n  # RU: Список рекламы, которая будет заменяться на ReplacementText. Регистр не учитывается")]
         public string[] Ads { get; set; } = new string[0];
 
         [Description("EN: Enables/disables an algorithm that replaces links in the nick with ReplacementText" +
@@ -43,8 +43,8 @@ namespace NoNickAds
 
 
 
-        [Description("EN: If player's nick contains a banned word, then the player will be banned" +
-               "\n  # RU: Если ник игрока содержит запрещённое слово, то игрок будет забанен")]
+        [Description("EN: If player's nick contains a banned word, then the player will be banned. Case insensitive" +
+               "\n  # RU: Если ник игрока содержит запрещённое слово, то игрок будет забанен. Регистр не учитывается")]
         public string[] BannedWords { get; set; } = new string[0];
 
         [Description("EN: The ban duration in case of a banned word in the nick" +
