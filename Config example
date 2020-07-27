@@ -1,11 +1,11 @@
 NoNickAds:
   is_enabled: true
-  whitelisted_players: \[76561198111120799@steam, 242306234269696000@discord, UnknownPole@northwood, notahubert@patreon]
-  ads: \[#yracribniulr, example]
+  whitelisted_players: [76561198111120799@steam, 242306234269696000@discord, UnknownPole@northwood, notahubert@patreon]
+  ads: [#yracribniulr, example]
   use_smart_link_replacer: true
   replacement_text: ''
   lite_replacing: true
-  banned_words: \[nigga, nigger]
+  banned_words: [nigga, nigger]
   ban_duration_in_minutes: 120
   use_unicode_normalization: false
   unicode_normalization: FormC
