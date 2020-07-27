@@ -1,4 +1,4 @@
-# EN [RU](https://github.com/Qidan475/NoNickAds#ru-en)
+# EN
 When player joins to the server, plugin replaces ads in his nickname with the specified text or just ban him.
 
 ## How to install
@@ -9,7 +9,7 @@ Drop NoNickAds.dll in to EXILED\Plugins.
 
 ***
 
-# RU [EN](https://github.com/Qidan475/NoNickAds/#en-ru)
+# RU
 При входе на сервер игрока, плагин заменяет рекламу в его нике указанным текстом или просто банит его.
 
 ## Установка
