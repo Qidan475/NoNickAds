@@ -1,30 +1,40 @@
-using EXILED;
+using Exiled;
+using Exiled.API.Features;
 using System;
 
 namespace NoNickAds
 {
-	public class Plugin : EXILED.Plugin
+	public class Plugin : Plugin<Configs>
 	{
 		public EventHandlers EventHandlers;
 
-		public override string getName { get; } = "NoNickAds";
+		public override string Author { get; } = "Dark7eamplar#2683";
 
-		public const string pluginVersion = "1.2";
+		public override string Name { get; } = "NoNickAds";
 
-		public override void OnEnable()
+		public override string Prefix { get; } = "NoNickAds";
+
+		public override Version Version { get; } = new Version(2, 0, 0);
+
+		public override Version RequiredExiledVersion { get; } = new Version(2, 0, 0);
+
+		public override Exiled.API.Enums.PluginPriority Priority { get; } = Exiled.API.Enums.PluginPriority.Medium;
+
+        internal static Plugin plugin;
+
+		public override void OnEnabled()
 		{
 			try
 			{
-				Configs.disabled = Plugin.Config.GetBool("nna_disable", false);
-				if (Configs.disabled)
+				plugin = this;
+				if (!plugin.Config.IsEnabled)
 				{
 					Log.Info("NoNickAds is disabled by config setting");
 					return;
 				}
-				Log.Debug("Initializing event handlers..");
 				EventHandlers = new EventHandlers(this);
-				Events.PlayerJoinEvent += EventHandlers.OnPlayerJoin;
-				Events.WaitingForPlayersEvent += EventHandlers.WaitingForPlayers;
+				Exiled.Events.Handlers.Player.Joined += EventHandlers.OnPlayerJoin;
+				Exiled.Events.Handlers.Server.WaitingForPlayers += EventHandlers.WaitingForPlayers;
 				Log.Info("NoNickAds plugin loaded");
 			}
 			catch (Exception e)
@@ -33,14 +43,14 @@ namespace NoNickAds
 			}
 		}
 
-		public override void OnDisable()
+		public override void OnDisabled()
 		{
-			Events.PlayerJoinEvent -= EventHandlers.OnPlayerJoin;
-			Events.WaitingForPlayersEvent -= EventHandlers.WaitingForPlayers;
+			Exiled.Events.Handlers.Player.Joined -= EventHandlers.OnPlayerJoin;
+			Exiled.Events.Handlers.Server.WaitingForPlayers -= EventHandlers.WaitingForPlayers;
 			EventHandlers = null;
 		}
 
-		public override void OnReload()
+		public override void OnReloaded()
 		{
 		}
 	}
