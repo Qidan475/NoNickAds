@@ -71,8 +71,8 @@ namespace NoNickAds
                "\n  # RU: Плагин будет предоставлять информацию по поводу того, что он делает")]
         public bool DebugMode { get; set; } = false;
 
-        [Description("EN: Don't touch it. For big brain bois only. https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference/" +
-               "\n  # RU: Лучше не трогай. https://docs.microsoft.com/ru-ru/dotnet/standard/base-types/regular-expression-language-quick-reference")]
+        [Description("EN: Don't touch it. For big brain bois only. Variables: %%word%%. https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference/" +
+               "\n  # RU: Лучше не трогай. Переменные: %%word%%. https://docs.microsoft.com/ru-ru/dotnet/standard/base-types/regular-expression-language-quick-reference")]
         public string AdsCustomRegexPattern { get; set; } = string.Empty;
 
         [Description("EN: Don't touch it. For big brain bois only. Variables: %%word%%. https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference/" +
@@ -81,22 +81,22 @@ namespace NoNickAds
 
         internal static void PrepareThings()
         {
-            if (Plugin.plugin.Config.IsEnabled)
+            if (Plugin.Instance.Config.IsEnabled)
             {
-                string[] ads = Plugin.plugin.Config.Ads;
-                string[] bannedWords = Plugin.plugin.Config.BannedWords;
-                Plugin.plugin.Config.adsRegices = new Regex[ads.Length];
-                Plugin.plugin.Config.bannedWordsRegices = new Regex[bannedWords.Length];
-                if (Plugin.plugin.Config.UseUnicodeNormalization)
+                string[] ads = Plugin.Instance.Config.Ads;
+                string[] bannedWords = Plugin.Instance.Config.BannedWords;
+                Plugin.Instance.Config.adsRegices = new Regex[ads.Length];
+                Plugin.Instance.Config.bannedWordsRegices = new Regex[bannedWords.Length];
+                if (Plugin.Instance.Config.UseUnicodeNormalization)
                 {
-                    if (Enum.TryParse(Plugin.plugin.Config.UnicodeNormalization, out NormalizationForm form))
+                    if (Enum.TryParse(Plugin.Instance.Config.UnicodeNormalization, out NormalizationForm form))
                     {
-                        Plugin.plugin.Config.currentNormalizationForm = form;
+                        Plugin.Instance.Config.currentNormalizationForm = form;
                     }
                     else
                     {
                         Log.Warn($"Invalid config \"unicode_normalization\", using default FormC...");
-                        Plugin.plugin.Config.currentNormalizationForm = NormalizationForm.FormC;
+                        Plugin.Instance.Config.currentNormalizationForm = NormalizationForm.FormC;
                     }
                 }
                 int successfulAdsRegices = 0;
@@ -104,7 +104,7 @@ namespace NoNickAds
                 string pattern = string.Empty;
                 try
                 {
-                    if (!string.IsNullOrWhiteSpace(Plugin.plugin.Config.AdsCustomRegexPattern))
+                    if (!string.IsNullOrWhiteSpace(Plugin.Instance.Config.AdsCustomRegexPattern))
                     {
                         for (int i = 0; i < ads.Length; i++)
                         {
@@ -113,18 +113,18 @@ namespace NoNickAds
                             {
                                 Log.Warn("Probably broken custom regex pattern");
                             }
-                            pattern = Plugin.plugin.Config.AdsCustomRegexPattern.Replace("%%word%%", word);
-                            Plugin.plugin.Config.adsRegices[i] = new Regex(pattern, RegexOptions.IgnoreCase);
+                            pattern = Plugin.Instance.Config.AdsCustomRegexPattern.Replace("%%word%%", word);
+                            Plugin.Instance.Config.adsRegices[i] = new Regex(pattern, RegexOptions.IgnoreCase);
                             successfulAdsRegices++;
                         }
                     }
-                    else if (Plugin.plugin.Config.LiteReplacing)
+                    else if (Plugin.Instance.Config.LiteReplacing)
                     {
                         for (int i = 0; i < ads.Length; i++)
                         {
                             string word = Regex.Escape(ads[i]);
                             pattern = word;
-                            Plugin.plugin.Config.adsRegices[i] = new Regex(pattern, RegexOptions.IgnoreCase);
+                            Plugin.Instance.Config.adsRegices[i] = new Regex(pattern, RegexOptions.IgnoreCase);
                             successfulAdsRegices++;
                         }
                     }
@@ -134,11 +134,11 @@ namespace NoNickAds
                         {
                             string word = Regex.Escape(ads[i]);
                             pattern = $@"\s*\W*{word}\w*\W*\s*";
-                            Plugin.plugin.Config.adsRegices[i] = new Regex(pattern, RegexOptions.IgnoreCase);
+                            Plugin.Instance.Config.adsRegices[i] = new Regex(pattern, RegexOptions.IgnoreCase);
                             successfulAdsRegices++;
                         }
                     }
-                    if (!string.IsNullOrWhiteSpace(Plugin.plugin.Config.BannedWordsCustomRegexPattern))
+                    if (!string.IsNullOrWhiteSpace(Plugin.Instance.Config.BannedWordsCustomRegexPattern))
                     {
                         for (int i = 0; i < bannedWords.Length; i++)
                         {
@@ -147,8 +147,8 @@ namespace NoNickAds
                             {
                                 Log.Warn("Probably broken custom regex pattern");
                             }
-                            pattern = Plugin.plugin.Config.BannedWordsCustomRegexPattern.Replace("%%word%%", word);
-                            Plugin.plugin.Config.bannedWordsRegices[i] = new Regex(pattern, RegexOptions.IgnoreCase);
+                            pattern = Plugin.Instance.Config.BannedWordsCustomRegexPattern.Replace("%%word%%", word);
+                            Plugin.Instance.Config.bannedWordsRegices[i] = new Regex(pattern, RegexOptions.IgnoreCase);
                             successfulBannedWordsRegices++;
                         }
                     }
@@ -158,14 +158,14 @@ namespace NoNickAds
                         {
                             string word = Regex.Escape(bannedWords[i]);
                             pattern = word;
-                            Plugin.plugin.Config.bannedWordsRegices[i] = new Regex(pattern, RegexOptions.IgnoreCase);
+                            Plugin.Instance.Config.bannedWordsRegices[i] = new Regex(pattern, RegexOptions.IgnoreCase);
                             successfulBannedWordsRegices++;
                         }
                     }
                 }
                 catch (Exception e)
                 {
-                    Log.Error($"Something's wrong. Ping Dark7eamplar#2683 in #plugin-discussions and send this:" +
+                    Log.Error($"Something's wrong. Ping {Plugin.Instance.Author} in Exiled's #plugin-discussions and send this:" +
                               $"{Environment.NewLine}=====START=====" +
                               $"{Environment.NewLine}Error: ({e.InnerException}) {e.Message}" +
                               $"{Environment.NewLine}Stack Trace: {e.StackTrace}" +
@@ -173,12 +173,12 @@ namespace NoNickAds
                               $"{Environment.NewLine}Method: {e.TargetSite}" +
                               $"{Environment.NewLine}+++++" +
                               $"{Environment.NewLine}Extra details" +
-                              $"{Environment.NewLine}Plugin version: {Plugin.plugin.Version.Major}.{Plugin.plugin.Version.Minor}.{Plugin.plugin.Version.Build}" +
-                              $"{Environment.NewLine}ads_custom_regex: \"{Plugin.plugin.Config.AdsCustomRegexPattern}\"" +
+                              $"{Environment.NewLine}Plugin version: {Plugin.Instance.Version.Major}.{Plugin.Instance.Version.Minor}.{Plugin.Instance.Version.Build}" +
+                              $"{Environment.NewLine}ads_custom_regex: \"{Plugin.Instance.Config.AdsCustomRegexPattern}\"" +
                               $"{Environment.NewLine}ads: \"{string.Join(",", ads)}\"" +
                               $"{Environment.NewLine}ads lenght: {ads.Length}" +
                               $"{Environment.NewLine}Successful ads regices: {successfulAdsRegices}" +
-                              $"{Environment.NewLine}bannedwords_custom_regex: \"{Plugin.plugin.Config.BannedWordsCustomRegexPattern}\"" +
+                              $"{Environment.NewLine}bannedwords_custom_regex: \"{Plugin.Instance.Config.BannedWordsCustomRegexPattern}\"" +
                               $"{Environment.NewLine}banned words: \"{string.Join(",", bannedWords)}\"" +
                               $"{Environment.NewLine}banned words lenght: \"{bannedWords.Length}\"" +
                               $"{Environment.NewLine}Successful banned words regices: {successfulBannedWordsRegices}" +

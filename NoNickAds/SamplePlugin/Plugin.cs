@@ -14,25 +14,25 @@ namespace NoNickAds
 
 		public override string Prefix { get; } = "NoNickAds";
 
-		public override Version Version { get; } = new Version(2, 0, 0);
+		public override Version Version { get; } = new Version(2, 0, 1);
 
-		public override Version RequiredExiledVersion { get; } = new Version(2, 0, 0);
+		public override Version RequiredExiledVersion { get; } = new Version(2, 1, 0);
 
 		public override Exiled.API.Enums.PluginPriority Priority { get; } = Exiled.API.Enums.PluginPriority.Medium;
 
-        internal static Plugin plugin;
+        internal static Plugin Instance;
 
 		public override void OnEnabled()
 		{
 			try
 			{
-				plugin = this;
-				if (!plugin.Config.IsEnabled)
+				Instance = this;
+				if (!Instance.Config.IsEnabled)
 				{
 					Log.Info("NoNickAds is disabled by config setting");
 					return;
 				}
-				EventHandlers = new EventHandlers(this);
+				EventHandlers = new EventHandlers();
 				Exiled.Events.Handlers.Player.Joined += EventHandlers.OnPlayerJoin;
 				Exiled.Events.Handlers.Server.WaitingForPlayers += EventHandlers.WaitingForPlayers;
 				Log.Info("NoNickAds plugin loaded");

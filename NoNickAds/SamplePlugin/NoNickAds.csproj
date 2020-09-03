@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NoNickAds</RootNamespace>
-    <AssemblyName>NoNickAds</AssemblyName>
+    <AssemblyName>NoNickAds201</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Configs.cs" />
     <Compile Include="EventHandlers.cs" />
+    <Compile Include="Misc.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
